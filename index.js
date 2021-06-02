@@ -117,6 +117,26 @@ class DiscoTools {
     deleteGlobalCommand = async function (commandId) {
         await this.client.api.applications(this.client.user.id).commands(commandId).delete();
     }
+    startVoiceActivity = async function (channel, activity) {
+        if(activity === "yt") {
+            activity = "755600276941176913";
+        } else if(activity === "fishing") {
+            activity = "814288819477020702";
+        } else if(activity === "amongus") {
+            activity = "773336526917861400";
+        }
+        const response = await bot.api.channels(channel.id).invites.post({
+            data: {
+                max_age: 86400,
+                max_uses: 0,
+                target_application_id: activity,
+                target_type: 2,
+                temporary: false,
+                validate: null
+            },
+        });
+        return response.code;
+    }
 }
 
 class Button {
