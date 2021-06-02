@@ -26,7 +26,7 @@ class DiscoTools {
             .setTitle(title)
             .setDescription(desc)
             .setColor(color)
-            .setFooter(footer + " | ServerSystem");
+            .setFooter(footer);
         return embed;
     }
     createAPIMessage = async function (interaction, content) {
