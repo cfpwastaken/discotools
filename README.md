@@ -1,14 +1,10 @@
-# DiscoTool
+# DiscoTools
 
 ## Installation
 
 Do `npm i discotools`
 
 ## How to use
-
-### Slash Commands
-
-Because Discord.JS (at the time of writing this) does not support Slash Commands. But with this package you can use them anyway!
 
 ```js
 const discord = require("discord.js");
