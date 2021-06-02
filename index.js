@@ -4,6 +4,23 @@ class DiscoTools {
     constructor(_client) {
         this.client = _client;
     }
+    setup = async function () {
+        client.ws.on("INTERACTION_CREATE", async (interaction) => {
+            const { options } = interaction.data;
+            const command = interaction.data.name.toLowerCase();
+
+            const args = {};
+
+            if(options) {
+                for(const option of options) {
+                    const { name, value } = option;
+                    args[name] = value;
+                }
+            }
+
+            client.emit("command", interaction, command, args);
+        });
+    }
     embed = (title, desc, color, footer) => {
         let embed = new MessageEmbed()
             .setTitle(title)
@@ -67,6 +84,12 @@ class DiscoTools {
     }
     deleteGlobalCommand = async function (commandId) {
         await this.client.api.applications(this.client.user.id).commands(commandId).delete();
+    }
+    getCommands = async function () {
+        return await bot.api
+            .applications(bot.user.id)
+            .guilds(guildId)
+            .commands.get();
     }
 }
 
