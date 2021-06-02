@@ -33,36 +33,51 @@ client.on("ready", async () => {
         }
     ]);
 
-    // Command Event!
-    bot.on("command", async (interaction, command, args) => {
-        if(command === "commandname") {
-            // Reply to command with a message
-            discotools.reply(interaction, "Response!");
-        } else if(command === "commandname2") {
-            // Reply to command with embed
-            const testembed = embed("Title", "Description", "RANDOM", "Footer");
-
-            reply(interaction, testembed)
-        } else if(command === "args") {
-            // Get arguments
-            const testembed = embed("Title", "Description", "RANDOM", "Footer");
-
-            for(const arg in args) {
-                const value = args[arg];
-                testembed.addField(arg, value);
-            }
-
-            reply(interaction, testembed);
-        }
-    });
-
     // Create API Messages (you don't actually need to know this)
     const apimessage = await discotools.createAPIMessage(interaction, content);
 
     // Delete commands
     await discotools.deleteGuildCommand("guildId", "commandId");
     await discotools.deleteGlobalCommand("commandId");
-})
+});
+
+// Command Event!
+bot.on("command", async (interaction, command, args) => {
+    if(command === "commandname") {
+        // Reply to command with a message
+        discotools.reply(interaction, "Response!");
+    } else if(command === "commandname2") {
+        // Reply to command with embed
+        const testembed = embed("Title", "Description", "RANDOM", "Footer");
+
+        reply(interaction, testembed)
+    } else if(command === "args") {
+        // Get arguments
+        const testembed = embed("Title", "Description", "RANDOM", "Footer");
+
+        for(const arg in args) {
+            const value = args[arg];
+            testembed.addField(arg, value);
+        }
+
+        reply(interaction, testembed);
+    } else if(command === "verycoolcommand") {
+        // ✨ BUTTONS ✨
+        var buttonOne = new DiscoToolsObject.Button(2, "Click me!", 1, "click_one");
+        var buttonTwo = new DiscoToolsObject.Button(2, "Click me 2!", 1, "click_two");
+
+        discotools.reply(interaction, "Click one of the buttons (:", [buttonOne, buttonTwo]);
+    }
+});
+
+// Button Event!
+bot.on("button", (interaction, id) => {
+    if(id === "click_one") {
+        discotools.reply(interaction, "You just clicked button one");
+    } else if(id === "click_two") {
+        discotools.reply(interaction, "You just clicked button two");
+    }
+});
 ```
 
 More very soon!

@@ -1,6 +1,6 @@
 {
   "name": "discotools",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Do `npm i discotools`",
   "main": "index.js",
   "directories": {
