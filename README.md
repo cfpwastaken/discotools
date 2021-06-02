@@ -63,8 +63,8 @@ bot.on("command", async (interaction, command, args) => {
         reply(interaction, testembed);
     } else if(command === "verycoolcommand") {
         // ✨ BUTTONS ✨
-        var buttonOne = new DiscoToolsObject.Button(2, "Click me!", 1, "click_one");
-        var buttonTwo = new DiscoToolsObject.Button(2, "Click me 2!", 1, "click_two");
+        var buttonOne = new DiscoTools.Button(2, "Click me!", 1, "click_one");
+        var buttonTwo = new DiscoTools.Button(2, "Click me 2!", 1, "click_two");
 
         discotools.reply(interaction, "Click one of the buttons (:", [buttonOne, buttonTwo]);
     }
